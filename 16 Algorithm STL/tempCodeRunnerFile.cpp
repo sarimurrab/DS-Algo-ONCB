@@ -1,21 +1,11 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
-void find_min_combination(int *arr, int money, int size)
-{
+    int position = 0;
 
-    while (money > 0)
+    for (int i = 1; i < N; i++)
     {
-        auto itr = upper_bound(arr, arr + size, money);
-        cout << arr[itr - arr - 1] << " ";
-        money = money - arr[itr - arr - 1];
+        if (A[position].second <=A[i].first)
+        {
+            count++;
+        }
+        position++;
     }
-}
-int main()
-{
-    int arr[] = {1, 2, 5, 10, 50, 100, 200, 500, 2000};
-    int money = 54;
-    int size = sizeof(arr) / sizeof(int);
-    find_min_combination(arr, money, size);
-    return 0;
-}
+    cout<<count;
