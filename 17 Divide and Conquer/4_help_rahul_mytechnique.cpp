@@ -34,6 +34,7 @@ int main()
         cin >> a[i];
     }
     ///////////////////////////
+    // finding position where rotation is done
     int position = 0;
     for (int i = 1; i < n; i++)
     {
@@ -60,7 +61,7 @@ int main()
     }
     else
     {
-        cout << binary_search(a, key, position , n);
+        cout << binary_search(a, key, position, n);
     }
 
     return 0;
