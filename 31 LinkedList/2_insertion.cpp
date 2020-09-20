@@ -161,8 +161,28 @@ bool recursive_search(node * head, int key)
     else
     return recursive_search(head->next,key);
 }
+// ******************************
+// read inut from a file 
+// g++ -o anyname abc.cpp
+// srm < input.txt
+node* input_linked()
+{
+    int d;
+    cin>>d;
+    node *head = NULL;
+    while(d!=-1)
+    {
+        insertAtHead(head,d);
+        cin>>d;
+    }
+    return head;
+
+}
 int main()
 {
+    node * head = input_linked();
+    display(head);
+    /*
     node *head = NULL;
     insertAtHead(head, 6);
     insertAtHead(head, 3);
@@ -189,4 +209,5 @@ int main()
     cout<<"recursive search :";
     cout<<endl;
     cout<<recursive_search(head,3);
+    */
 }
