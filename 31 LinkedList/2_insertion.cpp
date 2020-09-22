@@ -178,10 +178,19 @@ node* input_linked()
     return head;
 
 }
+ostream& operator<<(ostream &ae, node * head)
+{
+    display(head);
+    cout<<endl;
+    return ae;
+
+}
 int main()
 {
     node * head = input_linked();
-    display(head);
+    node * head2 = input_linked();
+    cout<<head<<head2;
+    //display(head);
     /*
     node *head = NULL;
     insertAtHead(head, 6);
