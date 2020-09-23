@@ -185,10 +185,18 @@ ostream& operator<<(ostream &ae, node * head)
     return ae;
 
 }
+istream& operator>>(istream& cin, node * &head)
+{
+    head = input_linked();
+    return cin;
+
+}
 int main()
 {
-    node * head = input_linked();
-    node * head2 = input_linked();
+    // node * head = input_linked();
+    // node * head2 = input_linked();
+    node * head,* head2;
+    cin>>head>>head2;
     cout<<head<<head2;
     //display(head);
     /*
