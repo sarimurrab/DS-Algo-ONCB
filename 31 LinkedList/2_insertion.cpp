@@ -207,10 +207,15 @@ node * reverse_reursive(node *head)
     }
     node *smallhead = reverse_reursive(head->next);
     node *temp = smallhead;
-    while (temp->next != NULL)
-    {
-        temp = temp->next;
-    }
+
+    // while (temp->next != NULL)  ------Optimization
+    // {
+    //     temp = temp->next;
+    // }
+
+    temp = head->next; 
+
+    //---------------------
     temp->next = head;
     head->next = NULL;
     return smallhead;
