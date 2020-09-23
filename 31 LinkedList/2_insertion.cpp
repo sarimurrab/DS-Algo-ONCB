@@ -221,6 +221,24 @@ node * reverse_reursive(node *head)
     return smallhead;
 }
 
+node * midpoint(node * head)
+{
+    if(head==NULL || head->next==NULL)
+    return head;
+    
+    node * slower = head;  // 1 position
+    node * faster = head; // 2 position -- to get saved from
+                                // segmentation fault--
+                                // when null pointer is reffered
+                                // some thing like that
+    while(faster->next !=NULL && faster!=NULL )
+    {
+        faster = faster->next->next;
+        slower = slower->next;
+    }
+    return slower;
+}
+
 int main()
 {
     // node * head = input_linked();
@@ -229,9 +247,12 @@ int main()
     cin >> head >> head2;
     cout << head << head2;
     //reverseiterate(head2);
-    head = reverse_reursive(head);
-    cout << endl;
-    cout << head;
+    // head = reverse_reursive(head);
+    // cout << endl;
+    // cout << head;
+    cout<<"MID POINTER :";
+    node * mid =  midpoint(head);
+    cout<<mid->data;
     //display(head);
     /*
     node *head = NULL;
