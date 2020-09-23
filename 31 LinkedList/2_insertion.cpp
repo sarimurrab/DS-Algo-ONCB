@@ -197,7 +197,23 @@ void reverseiterate(node *&head)
         curr = n;
     }
     head = prev;
-    
+}
+
+node * reverse_reursive(node *head)
+{
+    if (head->next == NULL || head == NULL)
+    {
+        return head;
+    }
+    node *smallhead = reverse_reursive(head->next);
+    node *temp = smallhead;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = head;
+    head->next = NULL;
+    return smallhead;
 }
 
 int main()
@@ -207,9 +223,10 @@ int main()
     node *head, *head2;
     cin >> head >> head2;
     cout << head << head2;
-    reverseiterate(head2);
-    cout<<endl;
-    cout<<head2;
+    //reverseiterate(head2);
+    head = reverse_reursive(head);
+    cout << endl;
+    cout << head;
     //display(head);
     /*
     node *head = NULL;
