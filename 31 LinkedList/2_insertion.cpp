@@ -221,11 +221,12 @@ node * reverse_reursive(node *head)
     return smallhead;
 }
 
+//_+++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_
 node * midpoint(node * head)
 {
     if(head==NULL || head->next==NULL)
     return head;
-    
+
     node * slower = head;  // 1 position
     node * faster = head; // 2 position -- to get saved from
                                 // segmentation fault--
@@ -237,6 +238,23 @@ node * midpoint(node * head)
         slower = slower->next;
     }
     return slower;
+}
+//_____________________________________________________________________________
+void knode_fromlast(node *head,int k)
+{
+    node * slow = head;
+    node * fast = head;
+    while(k!=0)
+    {
+        fast = fast->next;
+        k--;
+    }
+    while(fast!=NULL)
+    {
+        slow = slow->next;
+        fast=fast->next;
+    }
+    cout<<slow->data;
 }
 
 int main()
@@ -253,6 +271,9 @@ int main()
     cout<<"MID POINTER :";
     node * mid =  midpoint(head);
     cout<<mid->data;
+
+    cout<<endl<<"knode from last:";
+    knode_fromlast(head,2);
     //display(head);
     /*
     node *head = NULL;
