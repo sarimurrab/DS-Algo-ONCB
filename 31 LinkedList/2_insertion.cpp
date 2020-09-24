@@ -212,6 +212,9 @@ node * reverse_reursive(node *head)
     // {
     //     temp = temp->next;
     // }
+    //    |
+    //    |
+    //   \_/
 
     temp = head->next; 
 
@@ -257,6 +260,30 @@ void knode_fromlast(node *head,int k)
     cout<<slow->data;
 }
 
+//_______________________________________________________________________
+node * merge(node* a , node * b)
+{
+    if(b==NULL)
+    return a;
+    if(a==NULL)
+    return b;
+
+    node * c;
+    if(a->data<b->data)
+    {
+        c=a;
+        c->next = merge(a->next, b);
+        
+    }
+    else
+    {
+        c=b;
+        c->next = merge(a, b->next);
+    }
+    return c;
+    
+}
+
 int main()
 {
     // node * head = input_linked();
@@ -274,6 +301,11 @@ int main()
 
     cout<<endl<<"knode from last:";
     knode_fromlast(head,2);
+
+    cout<<endl<<"___________"<<endl;
+    cout<<"Merge Two Sorted Array"<<endl;
+    node * ab = merge(head, head2);
+    cout<<ab;
     //display(head);
     /*
     node *head = NULL;
