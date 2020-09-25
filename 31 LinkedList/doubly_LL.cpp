@@ -99,8 +99,50 @@ void insertatpos(node * &head, int data, int pos)
 
     return ;
 
+}
+//_______________________delete at pos___start from 1___________________
+void deleteAtpos(node* &head, int pos)
+{
+    if(head==NULL)
+    return;
+
+    if(pos==1)
+    {
+        node * temp = head;
+        
+        head = head->next;
+        delete temp;
+        temp->prev = NULL;
+        return;
+    }
+
+    node * temp1 = head;
+    if(pos==length(temp1))
+    {
+        while(temp1->next->next !=NULL)
+        {
+            temp1 = temp1->next;
+        }
+        delete temp1->next;
+        temp1->next = NULL;
+        return ;
+    }
 
 
+    while(pos-2>0)
+    {
+        temp1= temp1->next; 
+        pos--;
+    }
+
+    node * temp = temp1->next;
+    temp1->next = temp1->next->next;
+    temp->next->prev = temp1;
+    delete temp;
+
+    
+    return;
+    
 }
 
 int main()
@@ -115,7 +157,9 @@ int main()
     insertAttail(head,50);
 
     insertatpos(head,67,5);
-    
+    display(head); 
+    cout<<endl;
+    deleteAtpos(head,5);  // delete(__, position starts from 1)
     display(head);
 
     return 0;
