@@ -1,3 +1,4 @@
+read msg
 git add .
-git commit -m "Commit-By-Sarim's BOT"
+git commit -m $msg
 git push -u origin master
