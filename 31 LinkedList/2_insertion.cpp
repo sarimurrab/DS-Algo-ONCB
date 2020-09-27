@@ -222,6 +222,7 @@ node * reverse_reursive(node *head)
     temp->next = head;
     head->next = NULL;
     return smallhead;
+    
 }
 
 //_+++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_
