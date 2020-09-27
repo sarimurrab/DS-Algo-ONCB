@@ -1,3 +1,3 @@
 git add .
-git commit -m "by bot_commit"
+git commit -m "Commit-By-Sarim's BOT"
 git push -u origin master
