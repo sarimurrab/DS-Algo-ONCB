@@ -11,11 +11,11 @@ int main()
 
     //_____________char ch = cin.get()_______________
     //____read only one character at a time
-    //char ca[2] ={'a','b'};
-    // char ca;
-    // ca =cin.get();
+    char ca[2] ={'a','b'};
+    char ca;
+    ca =cin.get();
     
-    // cout << ca;
+    cout << ca;
 
 
     return 0;
