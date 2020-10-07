@@ -4,8 +4,8 @@ int main()
 {
     //_________________cin.getline(arr, size,delimeter)
     // ___________read complete sentence including spaces
-    char ch[1000];
-    cin.getline(ch, 1000, '*');
+    char ch[10];
+    cin.getline(ch, 1000,'$');
     cout << ch;
 
 
