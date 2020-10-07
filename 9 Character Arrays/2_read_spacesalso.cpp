@@ -11,8 +11,11 @@ int main()
 
     //_____________char ch = cin.get()_______________
     //____read only one character at a time
-    char ca = cin.get();
-    cout << ca;
+    //char ca[2] ={'a','b'};
+    // char ca;
+    // ca =cin.get();
+    
+    // cout << ca;
 
 
     return 0;

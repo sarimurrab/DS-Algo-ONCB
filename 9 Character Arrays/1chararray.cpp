@@ -8,7 +8,7 @@ int main()
     cout<<a;
 
     //________________type 2
-    //______automatically put '\0' in the last when '\n' occurs
+    //______automatically put '\0' in the last when '\n' or ' ' occurs
     char array[10];
     cin>>array;
     cout<<array;

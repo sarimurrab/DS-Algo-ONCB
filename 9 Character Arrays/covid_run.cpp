@@ -14,7 +14,7 @@ class node
     }
 };
 
-void insertAtfront(node *&head,int data)
+void insertAtfront(node *&head, int data)
 {
     if(head==NULL)
     {
@@ -23,7 +23,7 @@ void insertAtfront(node *&head,int data)
     }
     node * temp = new node(data);
     temp->next = head;
-    head->next = temp;
+    head = temp;
 
     return;
 }
@@ -48,42 +48,44 @@ int main()
         {
             insertAtfront(head,i);
         }
-        display(head);
+        //display(head);
 
-        // node * ex, * yi;      // ex at x
-        // node * temp = head;  // yi at  y
-        // while(temp->next!=NULL)
-        // {
-        //     if(temp->data==x)
-        //         ex=temp;
-        //     if(temp->data ==y)
-        //         yi = temp;
-        //     temp = temp->next;
-        // }
-        // temp->next = head;
-        // //___________circular tayyar____________
+        node * ex, * yi;      // ex at x
+        node * temp = head;  // yi at  y
+        while(temp->next!=NULL)
+        {
+            if(temp->data==x)
+                ex=temp;
+            if(temp->data ==y)
+                yi = temp;
+            temp = temp->next;
+        }
+        temp->next = head;
+        //___________circular tayyar____________
 
-        // int sarim = -1;
-        // while(n--)
-        // {
-        //     while(k--)
-        //     {
-        //         ex = ex->next;
-        //     }
-        //     if(ex==yi)
-        //     {
-        //         sarim = 1;
-        //         break;
-        //     }
+        int sarim = -1;
+        int ankita = k;
+        while(n--)
+        {
+            while(ankita--)
+            {
+                ex = ex->next;
+            }
+            ankita=k;
+            if(ex==yi)
+            {
+                sarim = 1;
+                break;
+            }
 
-        // }
+        }
 
-        // if(sarim==1)
-        // cout<<"YES"<<endl;
-        // else
-        // cout<<"NO"<<endl;
+        if(sarim==1)
+        cout<<"YES"<<endl;
+        else
+        cout<<"NO"<<endl;
         
-        // t--;
+        
 
     }
 
