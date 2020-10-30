@@ -62,6 +62,16 @@ void postorder_print(node *root)
     return;
 }
 
+int height(node * root)
+{
+    if(root == NULL)
+    return 0;
+
+    int hl = height(root->left);
+    int hr = height(root->right);
+
+    return max(hl,hr)+1;
+}
 
 
 int main()
@@ -73,7 +83,8 @@ int main()
     inorder_print(root);
     cout<<endl;
     postorder_print(root);
-    
 
+    cout<<endl<<"height : ";
+    cout<<height(root);
     return 0;
 }
