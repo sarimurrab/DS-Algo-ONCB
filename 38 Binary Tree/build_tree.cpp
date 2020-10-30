@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class node
@@ -86,7 +87,7 @@ void printk_level(node * root, int k)
 
     printk_level(root->left,k-1);
     printk_level(root->right,k-1);
-    
+
 
     return;
 }
@@ -103,6 +104,52 @@ void printAllevels(node * root)
 }
 
 
+void bfs(node * root)  // not in new line
+{
+    queue<node *> q;
+    q.push(root);
+    while(!q.empty())
+    {
+        node * temp= q.front();
+        cout<<temp->data<<" ";
+        q.pop();
+        q.push(temp->left);
+        q.push(temp->right);
+
+    }
+    return;
+}
+
+void bfs_newline(node * root)  // In new line
+{
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        node* f = q.front();
+        if(f==NULL){
+            cout<<endl;
+            q.pop();
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            cout<<f->data<<",";
+            q.pop();
+
+            if(f->left){
+                q.push(f->left);
+            }
+            if(f->right){
+                q.push(f->right);
+            }
+        }
+    }
+    return;
+}
+
 int main()
 {
     node *root = buildtree();
@@ -118,7 +165,8 @@ int main()
     cout<<height(root);
     */
 
-    printAllevels(root);
+    //printAllevels(root);
+    bfs_newline(root);
 
     return 0;
 }
