@@ -79,10 +79,14 @@ void printk_level(node * root, int k)
     return;
 
     if(k==1)
+    {
     cout<<root->data<<" ";
+    return;
+    }
 
     printk_level(root->left,k-1);
     printk_level(root->right,k-1);
+    
 
     return;
 }
