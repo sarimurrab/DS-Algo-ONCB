@@ -73,18 +73,48 @@ int height(node * root)
     return max(hl,hr)+1;
 }
 
+void printk_level(node * root, int k)
+{
+    if(root ==NULL)
+    return;
+
+    if(k==1)
+    cout<<root->data<<" ";
+
+    printk_level(root->left,k-1);
+    printk_level(root->right,k-1);
+
+    return;
+}
+
+void printAllevels(node * root)
+{
+    int h = height(root);
+
+    for(int i=1;i<=h;i++)
+    {
+        printk_level(root,i);
+        cout<<endl;
+    }
+}
+
 
 int main()
 {
     node *root = buildtree();
-
+    /*
     preorder_print(root);
     cout<<endl;
     inorder_print(root);
     cout<<endl;
     postorder_print(root);
+    
 
     cout<<endl<<"height : ";
     cout<<height(root);
+    */
+
+    printAllevels(root);
+
     return 0;
 }
