@@ -16,6 +16,8 @@ public:
     }
 };
 
+
+
 node *buildtree()
 {
     int d;
@@ -110,14 +112,14 @@ void bfs(node * root)  // not in new line
     q.push(root);
     while(!q.empty())
     {
-        node * temp= q.front();
+        node * temp = q.front();
         cout<<temp->data<<" ";
         q.pop();
+
         q.push(temp->left);
         q.push(temp->right);
 
     }
-    return;
 }
 
 int count_numofnodes(node * root)
@@ -175,6 +177,26 @@ void bfs_newline(node * root)  // In new line
     return;
 }
 
+
+
+int diameter(node * root)
+{
+    if(root==NULL)
+    return 0;
+
+    int h1 = height(root->left);
+    int h2 = height(root->right);
+    int optn1 = h1+h2;
+    int optn2 = diameter(root->left);
+    int optn3 = diameter(root->right);
+
+
+    return max(optn1, max(optn2, optn3));
+
+
+}
+
+
 int main()
 {
     node *root = buildtree();
@@ -188,15 +210,19 @@ int main()
 
     cout<<endl<<"height : ";
     cout<<height(root);
-    */
-
-    /*
+    
     printAllevels(root);
-    bfs_newline(root);
     */
+    
+    
+    /*
+    bfs_newline(root);
+    bfs(root);
 
-    cout<<count_numofnodes(root);
-    cout<<endl<<sum_of_nodes(root);
+    cout<<"Number of Node : "<<count_numofnodes(root);
+    cout<<endl<<"Sum of Nodes : "<<sum_of_nodes(root);
+    */
+    cout<<endl<<"Diameter : "<<diameter(root);
 
 
 
