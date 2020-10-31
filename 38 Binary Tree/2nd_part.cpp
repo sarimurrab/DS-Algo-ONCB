@@ -177,6 +177,79 @@ void bfs_newline(node * root)  // In new line
     return;
 }
 
+class HBpair
+{
+    public:
+    int height;
+    bool balance;
+};
+
+HBpair isheightbalanced(node * root)
+{
+    HBpair p;
+    if(root == NULL)
+    {
+        p.height =0;
+        p.balance = true;
+        return p;
+    }
+
+    HBpair left = isheightbalanced(root->left);
+    HBpair right = isheightbalanced(root->right);
+    p.height = max(left.height, right.height)+1;
+    if(abs(left.height-right.height)<=1  && left.balance && right.balance)
+    p.balance = true;
+    else
+    {
+        p.balance = false;
+    }
+    return p;
+    
+}
+
+
+node * buildbalancedfromarray(int *a, int s, int e)
+{
+    if(s>e)
+    return NULL;
+
+    int mid = (s+e)/2;
+    node * root = new node(a[mid]);
+    root->left = buildbalancedfromarray(a,s,mid-1);
+    root->right = buildbalancedfromarray(a,mid+1,e);
+
+
+    return root;
+}
+
+
+node * createfrom_in_pre(int * in, int * pre, int s, int e)
+{
+    static int i=0;
+    if(s>e)
+    return NULL;
+
+    node * root = new node(pre[i]);
+    
+
+    int index =-1;
+    for(int j=s;j<e;j++)
+    {
+        if(in[j]==pre[i])
+        {
+            index = j;
+            break;
+        }
+    }
+    i++;
+
+    root->left = createfrom_in_pre(in, pre, s,index-1);
+    root->right = createfrom_in_pre(in,pre,index+1, e);
+
+    return root;
+
+
+}
 
 
 int diameter(node * root)
@@ -196,6 +269,36 @@ int diameter(node * root)
 
 }
 
+void printrightview(node * root)
+{
+    if(root==NULL)
+    return ;
+
+    queue<node *> q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        int n = q.size();
+        for(int i=1;i<=n;i++)
+        {
+            node * temp = q.front();
+            q.pop();
+
+            if(i==1 )  //  right view i==n
+            cout<<temp->data<<" ";
+
+            if(temp->left !=NULL)
+            q.push(temp->left);
+
+            if(temp->right!=NULL)
+            q.push(temp->right);
+
+
+        }
+    }
+
+}
 
 int main()
 {
@@ -222,9 +325,17 @@ int main()
     cout<<"Number of Node : "<<count_numofnodes(root);
     cout<<endl<<"Sum of Nodes : "<<sum_of_nodes(root);
     */
-    cout<<endl<<"Diameter : "<<diameter(root);
+    // cout<<endl<<"Diameter : "<<diameter(root);
 
+    // HBpair p = isheightbalanced(root);
+    // cout<<endl<<p.balance;
 
+    // int a[6] = {1,2,3,4,5,6};
+    // node * root1 = buildbalancedfromarray(a,0,5);
+    printAllevels(root);
+    cout<<endl;
+    printrightview(root);
+    
 
     return 0;
 }
