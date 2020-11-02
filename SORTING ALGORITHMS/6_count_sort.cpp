@@ -3,7 +3,7 @@
 using namespace std;
 
 // works only for positive integers (values>0)
-// It will perform better if the range of greatest and smallest value is less.
+// It will perform better if the range of greatest and smallest value in array is less.
 void count_sort(int *a, int n)
 {
     int max_number = INT_MIN;
@@ -11,15 +11,16 @@ void count_sort(int *a, int n)
     {
         max_number = max(max_number, a[i]);
     }
-    // I would be making a array and keeping my index from 1
 
+    
+    // max_number + 1 --> I would be making an array and keeping my index from 1
     int *freq = new int[max_number + 1]{0};
     for (int i = 0; i < n; i++)
     {
         freq[a[i]]++;
     }
 
-    // re entering the number in the array
+    // re entering the number in the original array
     int pointer = 0;
     for(int i=0;i<max_number+1;i++)
     {
