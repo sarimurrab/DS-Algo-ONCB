@@ -7,7 +7,7 @@ class graph
     int v;
     list<int> *l;
 
-public:
+    public:
     graph(int v)
     {
         this->v = v;
@@ -33,29 +33,42 @@ public:
         }
     }
 
-    void bfs()
+    void bfs(int src)
     {
-        set<int> visited;
+        map<int, int> dist;
         queue<int> q;
 
-        q.push(0);
-        visited.insert(0);
-        
-        while(!q.empty())
+        for (int i = 0; i < v; i++)
         {
-            int save = q.front();
-            cout<<save<<" ";
+            dist[i] = INT_MAX;
+        }
+
+        q.push(src);
+        dist[src] = 0;
+
+        while (!q.empty())
+        {
+            int particular_node = q.front();
+            //cout<<save<<" ";
             q.pop();
-            for(auto e : l[save])
+            for (auto e : l[particular_node])
             {
-                if(visited.count(e)!=1)
+                if (dist[e] == INT_MAX)
                 {
-                q.push(e);
-                visited.insert(e);
+                    q.push(e);
+                    dist[e] = dist[particular_node] + 1;
                 }
             }
         }
 
+        //____________single_source_shortest_path________________
+        for (auto pr : dist)
+        {
+            int till = pr.first;
+            int distance = pr.second;
+            cout << "From " << src << " till " << till << " --> " << distance;
+            cout<<endl;
+        }
     }
 };
 
@@ -70,5 +83,10 @@ int main()
     g.add_edges(3, 4);
     g.add_edges(4, 5);
 
-    g.bfs();
+    g.print();
+    cout << endl;
+    g.bfs(0);
+    
+
+    return 0;
 }
