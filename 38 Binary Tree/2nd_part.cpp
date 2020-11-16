@@ -196,12 +196,16 @@ HBpair isheightbalanced(node * root)
 
     HBpair left = isheightbalanced(root->left);
     HBpair right = isheightbalanced(root->right);
-    p.height = max(left.height, right.height)+1;
+    
     if(abs(left.height-right.height)<=1  && left.balance && right.balance)
-    p.balance = true;
+    {
+    	p.balance = true;
+    	p.height = max(left.height, right.height)+1;
+    }
     else
     {
         p.balance = false;
+        p.height = max(left.height, right.height)+1;
     }
     return p;
     
@@ -233,7 +237,7 @@ node * createfrom_in_pre(int * in, int * pre, int s, int e)
     
 
     int index =-1;
-    for(int j=s;j<e;j++)
+    for(int j=0;j<e;j++)
     {
         if(in[j]==pre[i])
         {
@@ -242,13 +246,11 @@ node * createfrom_in_pre(int * in, int * pre, int s, int e)
         }
     }
     i++;
-
-    root->left = createfrom_in_pre(in, pre, s,index-1);
+    
+	root->left = createfrom_in_pre(in, pre, s,index-1);
     root->right = createfrom_in_pre(in,pre,index+1, e);
 
     return root;
-
-
 }
 
 
@@ -293,11 +295,8 @@ void printrightview(node * root)
 
             if(temp->right!=NULL)
             q.push(temp->right);
-
-
-        }
+		}
     }
-
 }
 
 int main()
